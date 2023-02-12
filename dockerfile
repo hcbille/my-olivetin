@@ -1,9 +1,9 @@
 FROM jamesread/olivetin
+VOLUME [ "/audiobook" ]
 
 #From the parent image
 #EXPOSE 1337/tcp 
 #VOLUME /config
-
 #ENTRYPOINT [ "/usr/bin/OliveTin" ]
 
 #It runs microdnf
@@ -13,12 +13,13 @@ RUN microdnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=insta
             python3 \
             python3-pip \
             ca-certificates \
+            vim \
         && microdnf clean all
 
 RUN python3 -m pip install --no-cache-dir --force-reinstall audiobook-dl 
 
-RUN curl --create-dirs 1 --output-dir /config/ https://raw.githubusercontent.com/hcbille/my-olivetin/master/config.yaml
+RUN curl --create-dirs 1 --output-dir /config/ https://raw.githubusercontent.com/hcbille/my-olivetin/master/config.yaml && \
+chmod 777 /audiobook/
+
 
 USER olivetin
-
-VOLUME [ "/audiobook" ]
