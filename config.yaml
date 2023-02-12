@@ -17,18 +17,17 @@ actions:
 
 - title: Download a book - Audiobook-DL
   icon: smile
-  shell: audiobook-dl {{ login }} {{ book }}
+  shell: audiobook-dl {{ login }} {{ book }} -o /audiobook/{title}
+  timeout: 200
   arguments:
     - name: login
       choices:
         - title: Nextory
-          value: --username test --password test
-
+          value: --username XXXXXXXX --password XXXXXXXX
         - title: Alt2
           value: val2
     - name: book
       title: URL for book
-      type: ascii_identifier
+      type: url
       default: example.com
       description: The book that you want to download
-          
