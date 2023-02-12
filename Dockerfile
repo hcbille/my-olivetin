@@ -18,7 +18,7 @@ RUN microdnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=insta
 
 RUN python3 -m pip install --no-cache-dir --force-reinstall audiobook-dl 
 
-RUN mkdir /config/ && wget -O /config/config.yaml https://raw.githubusercontent.com/hcbille/my-olivetin/master/config.yaml   && \
+RUN wget -O /config/config.yaml https://raw.githubusercontent.com/hcbille/my-olivetin/master/config.yaml   && \
 mkdir /audiobook/ && \
 chmod 777 /audiobook/
 
