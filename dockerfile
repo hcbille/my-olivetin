@@ -1,5 +1,4 @@
 FROM jamesread/olivetin
-VOLUME [ "/audiobook" ]
 
 #From the parent image
 #EXPOSE 1337/tcp 
@@ -19,6 +18,7 @@ RUN microdnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=insta
 RUN python3 -m pip install --no-cache-dir --force-reinstall audiobook-dl 
 
 RUN curl --create-dirs 1 --output-dir /config/ https://raw.githubusercontent.com/hcbille/my-olivetin/master/config.yaml && \
+mkdir /audiobook/ && \
 chmod 777 /audiobook/
 
 
