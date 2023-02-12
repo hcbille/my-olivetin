@@ -1,0 +1,34 @@
+# There is a built-in micro proxy that will host the webui and REST API all on 
+# one port (this is called the "Single HTTP Frontend") and means you just need 
+# one open port in the container/firewalls/etc. 
+#
+# Listen on all addresses available, port 1337
+listenAddressSingleHTTPFrontend: 0.0.0.0:1337 
+
+# Choose from INFO (default), WARN and DEBUG
+logLevel: "INFO"
+
+# Actions (buttons) to show up on the WebUI:
+actions:   
+  # This will run a simple script that you create.
+- title: Audiobook-dl
+  shell: audiobook-dl
+  icon: backup
+
+- title: Download a book - Audiobook-DL
+  icon: smile
+  shell: audiobook-dl {{ login }} {{ book }}
+  arguments:
+    - name: login
+      choices:
+        - title: Nextory
+          value: --username test --password test
+
+        - title: Alt2
+          value: val2
+    - name: book
+      title: URL for book
+      type: ascii_identifier
+      default: example.com
+      description: The book that you want to download
+          
