@@ -17,7 +17,7 @@ RUN microdnf install -y --nodocs --noplugins --setopt=keepcache=0 --setopt=insta
 
 RUN python3 -m pip install --no-cache-dir --force-reinstall audiobook-dl 
 
-COPY config.yaml /config/config.yaml
+RUN curl --create-dirs 1 --output-dir /config/ https://raw.githubusercontent.com/hcbille/my-olivetin/master/config.yaml
 
 USER olivetin
 
