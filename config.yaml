@@ -9,15 +9,16 @@ listenAddressSingleHTTPFrontend: 0.0.0.0:1337
 logLevel: "INFO"
 
 # Actions (buttons) to show up on the WebUI:
-actions:   
-  # This will run a simple script that you create.
+actions:
+
+  # This will run a simple script that you create. This is just to verify that audiobook-dl has been downloaded correctly
 - title: Audiobook-dl
   shell: audiobook-dl
   icon: backup
 
 - title: Download a book - Audiobook-DL
   icon: smile
-  shell: audiobook-dl {{ login }} {{ book }} -o /audiobook/{title}
+  shell: audiobook-dl {{ login }} {{ book }} --remove-chars ":%-" -o /audiobook/{title}
   timeout: 200
   arguments:
     - name: login
