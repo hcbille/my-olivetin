@@ -32,3 +32,8 @@ actions:
       type: url
       default: example.com
       description: The book that you want to download
+
+- title: Split all books into parts
+  icon: smile
+  shell: /audiobook/splitbooks.sh
+  timeout: 3600
