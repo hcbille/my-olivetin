@@ -18,7 +18,7 @@ actions:
 
 - title: Download a book - Audiobook-DL
   icon: smile
-  shell: audiobook-dl {{ login }} {{ book }} --remove-chars ":%-?" -o /audiobook/{title}
+  shell: audiobook-dl {{ login }} {{ book }} --remove-chars ":%-?" -o /tmp-books/{title}
   timeout: 200
   arguments:
     - name: login
@@ -34,6 +34,5 @@ actions:
       description: The book that you want to download
 
 - title: Split all books into parts
-  icon: smile
-  shell: /audiobook/splitbooks.sh
+  shell: cd /tmp-books/ && ./splitbooks.sh >> logs.txt
   timeout: 3600

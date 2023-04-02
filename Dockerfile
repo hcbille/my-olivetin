@@ -24,8 +24,11 @@ RUN yum localinstall -y --nogpgcheck https://download1.rpmfusion.org/free/fedora
     yum clean all
 
 RUN wget -O /config/config.yaml https://raw.githubusercontent.com/hcbille/my-olivetin/master/config.yaml   && \
-mkdir /audiobook/ && \
-chmod 777 /audiobook/
+mkdir -p /audiobook/ && \
+chmod 777 /audiobook/ && \
+mkdir -p /tmp-books/ && \
+chmod 777 /tmp-books/ && \
+wget -O /tmp-books/splitbooks.sh https://raw.githubusercontent.com/hcbille/my-olivetin/master/splitbooks.sh
 
 
 USER olivetin
